@@ -1,0 +1,34 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+int calPoints(char **ops, int opsSize) {
+    int *record = (int *)malloc(opsSize * sizeof(int));
+    int recordSize = 0; 
+    int sum = 0;        
+
+    for (int i = 0; i < opsSize; i++) {
+        if (strcmp(ops[i], "C") == 0) {
+            
+            sum -= record[--recordSize];
+        } else if (strcmp(ops[i], "D") == 0) {
+            
+            int score = 2 * record[recordSize - 1];
+            record[recordSize++] = score;
+            sum += score;
+        } else if (strcmp(ops[i], "+") == 0) {
+            
+            int score = record[recordSize - 1] + record[recordSize - 2];
+            record[recordSize++] = score;
+            sum += score;
+        } else {
+            
+            int score = atoi(ops[i]);
+            record[recordSize++] = score;
+            sum += score;
+        }
+    }
+
+    free(record); 
+    return sum;   
+}
