@@ -1,0 +1,59 @@
+
+int  pop(){//function to delet element at top of stack
+ if(isEmpty()){
+ printf("Stack Underflow!!!!!");
+ return INT_MIN;
+ }
+ else{
+    int val =stack[top];
+    top--;
+    return val;
+ }
+}   
+int  peek(){//function to get and return  element at top of stack
+    if(isEmpty()){
+    printf("Stack is empty!!!!");
+    return INT_MIN;
+    }
+    else{
+       return stack[top];
+    }
+   }   
+
+int main(){
+    int val;
+while(1){
+    printf("1. Push\n2. Pop\n3. Peek\n4. Show\n5. Exit\n");
+    int choice;
+    printf("Enter choice: ");
+    scanf("%d",& choice);
+    switch(choice){
+        case 1:
+        push();
+        break;
+        case 2:
+        val =pop();
+        if(val != INT_MAX){
+            printf("POP from the stack !!\n"); }
+        break;
+        case 3:
+       val= peek();
+       if(val != INT_MAX){
+        printf("Stack top element is: %d\n",val); }
+        break;
+        case 4:
+        show();
+        break;
+        case 5:
+        exit(0);
+        break;
+        default:
+        printf("Invalid choice!!!!");
+    }
+    printf("\n");
+    system("pause");
+    
+  }
+
+    return 0;
+}
